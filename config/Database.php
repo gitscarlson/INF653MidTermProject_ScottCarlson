@@ -1,11 +1,11 @@
 <?php
     class Database {
         //DB params 
-        private $host = 'postgres://scarlson:WIWKyDcO3fYkV3loRwGKCVfarLDmIWjb@dpg-cfv14dhmbjsj9ann1ib0-a.oregon-postgres.render.com/quotesdb_ej24';
-        private $port = '5432';
-        private $db_name = 'quotesdb_ej24';
-        private $username = 'my_blog_hnuq_user';
-        private $password = '8w6gsvxlYWuyp69vsbsjbE9TTRt6fkap';
+        private $host;
+        private $port;
+        private $db_name;
+        private $username;
+        private $password;
         private $conn;
 
         public function __construct() {
