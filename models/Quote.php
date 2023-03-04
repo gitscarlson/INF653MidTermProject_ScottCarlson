@@ -7,8 +7,8 @@
         //Quote Properties
         public $id;
         public $quote;
-        public $category_id;
-        public $author_id;
+        public $category;
+        public $author;
 
         //Constructor with DB
 
@@ -24,7 +24,7 @@
             c.category as category,
             q.quote
             FROM 
-                ' . $this->table . ' q
+                $this->table q
             LEFT JOIN 
                 authors a ON author_id = a.id
             LEFT JOIN
@@ -49,7 +49,7 @@
              c.category as category,
              q.quote
              FROM 
-                 ' . $this->table . ' q
+                  $this->table q
              LEFT JOIN 
                  authors a ON author_id = a.id
              LEFT JOIN
@@ -70,11 +70,10 @@
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Set properties
-        $this-title = $row['title'];
-        $this-body = $row['body'];
-        $this-author = $row['author'];
-        $this-category_id = $row['category_id'];
-        $this-category_name = $row['category_name'];
+        //$this-id = $row['id'];
+        $this->quote = $row['quote'];
+        $this->author = $row['author'];
+        $this->category = $row['category'];
 
         }
     }
