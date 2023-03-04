@@ -53,11 +53,13 @@
         //Execute query
         $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt;
+
+        //$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Set properties
-        $this-id = $row['id'];
-        $this-author = $row['author'];
+        //$this-id = $row['id'];
+        //$this-author = $row['author'];
         
 
         }

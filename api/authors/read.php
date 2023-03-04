@@ -1,4 +1,10 @@
 <?php
+require('../../config/Database.php');
+require('../../models/Author.php');
+
+//Database
+$database = new Database();
+$db = $database->connect();
 
 //Instantiate blog post object
 $author = new Author($db);

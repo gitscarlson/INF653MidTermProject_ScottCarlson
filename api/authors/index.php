@@ -9,4 +9,9 @@
         exit();
     }
 
+
+    if ($method === 'GET') {
+        require('read.php');
+        require('read_single.php');
+    }
 ?>
