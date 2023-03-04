@@ -20,7 +20,7 @@
             $query = "SELECT 
             id, author
             FROM 
-                $this->table
+                {$this->table}
             ORDER BY id";
 
         //Prepared statements
@@ -28,7 +28,7 @@
 
         //Execute query
         $stmt->execute();
-
+        
         return $stmt;
             
         }
@@ -40,28 +40,25 @@
              $query = "SELECT 
              author
              FROM 
-                $this->table
+                {$this->table}
              WHERE
              id = ?";
 
-        //Prepared statements
-        $stmt = $this->conn->prepare($query);
+            //Prepared statements
+            $stmt = $this->conn->prepare($query);
 
-        //Bind ID
-        $stmt->bindParam(1, $this->id);
+            //Bind ID
+            $stmt->bindParam(1, $this->id); 
 
-        //Execute query
-        $stmt->execute();
+            //Execute query
+            $stmt->execute();
 
-        return $stmt;
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        //$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        //Set properties
-        //$this-id = $row['id'];
-        //$this-author = $row['author'];
+            //Set properties
+            //$this->id = $row['id'];
+            $this->author = $row['author'];
         
-
         }
     }
 

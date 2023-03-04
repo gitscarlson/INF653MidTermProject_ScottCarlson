@@ -1,4 +1,9 @@
 <?php
+//Headers
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+
+//required files
 require('../../config/Database.php');
 require('../../models/Author.php');
 
@@ -11,6 +16,7 @@ $author = new Author($db);
 
 //author query
 $result = $author->read();
+
 //Get row count
 $num = $result->rowCount();
 
@@ -25,7 +31,7 @@ if($num > 0) {
 
         $author_item = array(
             'id' => $id,
-            'author' => $author,
+            'author' => $author
         );
 
         //Push data
@@ -33,11 +39,11 @@ if($num > 0) {
     }
 
     //turn to JSON and output data
-    echo json_encode($author_arr);
+    echo (json_encode($author_arr));
 
 } else {
     echo json_encode(
-        array('message' => 'No Posts Found')
+        array('message' => 'No Authors Found')
     );
 }
 
