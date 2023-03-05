@@ -56,7 +56,7 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
-            $this->id = $row['id'];
+            //$this->id = $row['id'];
             $this->author = $row['author'];
         
         }
