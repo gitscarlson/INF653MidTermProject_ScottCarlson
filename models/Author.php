@@ -78,6 +78,7 @@
 
             //execute query
             if ($stmt->execute()) {
+                $lastId = $this->conn->lastInsertId();
                 return true;
             }
             //print error if something goes wrong

@@ -24,7 +24,7 @@ $author->author = $data->author;
 //Create Author
 if($author->create()) {
     echo json_encode(
-        array('message' => 'Author Created')
+        array("id"=> $db->lastInsertId(), "author"=>$author->author)
     );
 } else {
     echo json_encode(
