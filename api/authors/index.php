@@ -2,7 +2,7 @@
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     $method = $_SERVER['REQUEST_METHOD'];
-    echo $method;
+
     //Getting URL that is being passed
     $uri = $_SERVER['REQUEST_URI'];
 
@@ -30,5 +30,9 @@
 
     else if ($method === 'PUT') {
         require('update.php');
+    }
+
+    else if ($method === 'DELETE') {
+        require('delete.php');
     }
 ?>

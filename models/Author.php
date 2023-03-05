@@ -116,6 +116,33 @@
             return false;
             }
         }
+
+        //Delete Author
+        public function delete() {
+            //Create delete query
+            $query = "DELETE FROM {$this->table} WHERE id = :id";
+
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
+
+            //Bind data from above
+            $stmt->bindParam(':id', $this->id);
+
+            //execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+            //print error if something goes wrong
+            else{           
+            printf("Error: %s. \n", $stmt->error);
+
+            return false;
+            }
+
+        }
     }
 
 
