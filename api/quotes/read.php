@@ -11,7 +11,7 @@ require('../../models/Quote.php');
 $database = new Database();
 $db = $database->connect();
 
-//Instantiate blog category object
+//Instantiate quote object
 $quote = new Quote($db);
 
 //category query

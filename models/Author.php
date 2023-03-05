@@ -60,6 +60,32 @@
             $this->author = $row['author'];
         
         }
+
+        //Create Author
+        public function create() {
+            //create query
+            $query = "INSERT INTO {$this->table} 
+            SET author = :author";
+
+            //prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->author = htmlspecialchars(strip_tags($this->author));
+
+            //Bind data from above
+            $stmt->bindParam(':author', $this->author);
+
+            //execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+
+            //print error if something goes wrong
+            printf("Error: %s. \n", $stmt->error)
+
+            return false;
+        }
     }
 
 
