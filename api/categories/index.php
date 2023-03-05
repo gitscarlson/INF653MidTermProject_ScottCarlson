@@ -23,6 +23,13 @@
         } else {
             require('read.php');
         }
-        
+    }
+
+    else if ($method === 'POST') {
+        require('create.php');
+    }
+
+    else if ($method === 'PUT') {
+        require('update.php');
     }
 ?>

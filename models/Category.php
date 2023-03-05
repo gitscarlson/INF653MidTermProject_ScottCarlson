@@ -60,6 +60,62 @@
             $this->category = $row['category'];
         
         }
+
+        //Create Category
+        public function create() {
+            //create query
+            $query = "INSERT INTO {$this->table} (category)
+            VALUES (:category)";
+
+            //prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->category = htmlspecialchars(strip_tags($this->category));
+
+            //Bind data from above
+            $stmt->bindParam(':category', $this->category);
+
+            //execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+            //print error if something goes wrong
+            else{           
+            printf("Error: %s. \n", $stmt->error);
+
+            return false;
+            }
+        }
+
+        //Update Category
+        public function update() {
+            //Update query
+            $query = "UPDATE {$this->table} 
+            SET category = :category
+            WHERE id = :id";
+
+            //prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->category = htmlspecialchars(strip_tags($this->category));
+
+            //Bind data from above
+            $stmt->bindParam(':id', $this->id);
+            $stmt->bindParam(':category', $this->category);
+
+            //execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+            //print error if something goes wrong
+            else{           
+            printf("Error: %s. \n", $stmt->error);
+
+            return false;
+            }
+        }
     }
 
 

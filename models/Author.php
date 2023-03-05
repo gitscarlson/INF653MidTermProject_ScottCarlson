@@ -56,7 +56,7 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
-            //$this->id = $row['id'];
+            $this->id = $row['id'];
             $this->author = $row['author'];
         
         }
@@ -64,8 +64,8 @@
         //Create Author
         public function create() {
             //create query
-            $query = "INSERT INTO {$this->table} 
-            SET author = :author";
+            $query = "INSERT INTO {$this->table} (author)
+            VALUES (:author)";
 
             //prepare statement
             $stmt = $this->conn->prepare($query);
@@ -80,11 +80,41 @@
             if ($stmt->execute()) {
                 return true;
             }
-
             //print error if something goes wrong
-            printf("Error: %s. \n", $stmt->error)
+            else{           
+            printf("Error: %s. \n", $stmt->error);
 
             return false;
+            }
+        }
+
+        //Update Author
+        public function update() {
+            //Update query
+            $query = "UPDATE {$this->table} 
+            SET author = :author
+            WHERE id = :id";
+
+            //prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->author = htmlspecialchars(strip_tags($this->author));
+
+            //Bind data from above
+            $stmt->bindParam(':id', $this->id);
+            $stmt->bindParam(':author', $this->author);
+
+            //execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+            //print error if something goes wrong
+            else{           
+            printf("Error: %s. \n", $stmt->error);
+
+            return false;
+            }
         }
     }
 

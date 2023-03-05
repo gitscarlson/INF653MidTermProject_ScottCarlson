@@ -2,10 +2,9 @@
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     $method = $_SERVER['REQUEST_METHOD'];
-    
+    echo $method;
     //Getting URL that is being passed
     $uri = $_SERVER['REQUEST_URI'];
-    //echo $uri; // Outputs: URI
 
     //$idPassed = parse_url($uri, PHP_URL_QUERY);
 
@@ -24,7 +23,12 @@
             require('read.php');
         }
     }
+    
     else if ($method === 'POST') {
         require('create.php');
+    }
+
+    else if ($method === 'PUT') {
+        require('update.php');
     }
 ?>
