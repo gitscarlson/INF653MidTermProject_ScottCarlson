@@ -57,7 +57,7 @@
              LEFT JOIN
                  categories c ON category_id = c.id
              WHERE
-             author_id = ? AND
+             id = ? OR author_id = ? OR
              category_id = ?";
 
         //Prepared statements
