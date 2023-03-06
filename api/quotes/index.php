@@ -25,4 +25,16 @@
         }
         
     }
+
+    else if ($method === 'POST') {
+        require('create.php');
+    }
+
+    else if ($method === 'PUT') {
+        require('update.php');
+    }
+
+    else if ($method === 'DELETE') {
+        require('delete.php');
+    }
 ?>

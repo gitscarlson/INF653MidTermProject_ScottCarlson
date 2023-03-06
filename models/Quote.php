@@ -22,7 +22,8 @@
             $query = "SELECT 
             a.author as author,
             c.category as category,
-            q.quote
+            q.quote, 
+            q.id
             FROM 
                 {$this->table} q
             LEFT JOIN 
@@ -47,9 +48,10 @@
              $query = "SELECT 
              a.author as author,
              c.category as category,
-             q.quote
+             q.quote,
+             q.id
              FROM 
-                  $this->table q
+                  {$this->table} q
              LEFT JOIN 
                  authors a ON author_id = a.id
              LEFT JOIN
