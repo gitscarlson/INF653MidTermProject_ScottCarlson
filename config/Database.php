@@ -11,7 +11,7 @@
         //DB params for Render
         private $host;
         private $port;
-        private $db_name;
+        private $dbname;
         private $username;
         private $password;
         private $conn;
@@ -26,12 +26,12 @@
 
          }
 
-        //DB connect for Render
+        //DB connect for Render - NEW
          public function connect () {
              if ($this->conn) {
                  return $this->conn;
              } else {
-                 $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->db_name}";
+                 $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->dbname};";
 
                  try {
                      $this->conn = new PDO($dsn, $this->username, $this->password);
