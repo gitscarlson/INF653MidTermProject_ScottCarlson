@@ -29,6 +29,6 @@ $author_arr = array(
 
 
 //Change to JSON data
-echo ($author_arr);
+print_r($author_arr);
 
 ?>
