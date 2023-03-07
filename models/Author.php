@@ -57,7 +57,14 @@
 
             //Set properties
             //$this->id = $row['id'];
-            $this->author = $row['author'] ?? '';
+            if( is_array($row) ) {
+
+                $this->author = $row['author'];
+                
+            } else{
+                return;
+            }
+            
         
         }
 

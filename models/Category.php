@@ -57,7 +57,13 @@
 
             //Set properties
             //$this->id = $row['id'];
-            $this->category = $row['category'] ?? '';
+            if( is_array($row) ) {
+
+                $this->category = $row['category'];
+                
+            } else{
+                return;
+            }
             
         
         }
