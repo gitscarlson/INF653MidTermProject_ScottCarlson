@@ -30,8 +30,8 @@ if($num > 0) {
         extract($row);
 
         $category_item = array(
-            'id' => $id,
-            'author' => $category
+            'id'=>$id,
+            'author'=>$category
         );
 
         //Push data
