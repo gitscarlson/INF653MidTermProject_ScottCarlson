@@ -26,6 +26,8 @@ $author_arr = array(
     'author' => $author->author
 );
 
+
+
 //Change to JSON data
 echo (json_encode($author_arr));
 
