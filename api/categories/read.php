@@ -38,8 +38,14 @@ if($num > 0) {
         array_push($category_arr, $category_item);
     }
 
+    if ($category_arr){
     //turn to JSON and output data
     echo (json_encode($category_arr));
+    };
+    else {
+        echo json_encode(
+            array('message' => 'No Categories Found')
+        };
 
 } else {
     echo json_encode(
