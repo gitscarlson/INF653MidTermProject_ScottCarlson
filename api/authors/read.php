@@ -30,8 +30,8 @@ if($num > 0) {
         extract($row);
 
         $author_item = array(
-            'id' => $id,
-            'author' => $author
+            'id'=>$id,
+            'author'=>$author
         );
 
         //Push data
