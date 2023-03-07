@@ -34,7 +34,7 @@ if($category->category !== null){
 else
     {
         echo json_encode(
-            array('message' => 'author_id Not Found')
+            array('message' => 'category_id Not Found')
         );
     }
 
