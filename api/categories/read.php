@@ -41,11 +41,7 @@ if($num > 0) {
     if ($category_arr){
     //turn to JSON and output data
     echo (json_encode($category_arr));
-    };
-    else {
-        echo json_encode(
-            array('message' => 'No Categories Found')
-        };
+    }
 
 } else {
     echo json_encode(

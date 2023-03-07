@@ -26,7 +26,14 @@ $category_arr = array(
     'category' => $category->category
 );
 
+if ($category->category == null){
+    echo json_encode(
+        array('message' => 'No Authors Found')
+    );
+}
+else{
 //Change to JSON data
 print_r(json_encode($category_arr, JSON_NUMERIC_CHECK));
+}
 
 ?>
