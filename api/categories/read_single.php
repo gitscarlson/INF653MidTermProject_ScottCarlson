@@ -27,6 +27,6 @@ $category_arr = array(
 );
 
 //Change to JSON data
-print_r(json_encode($category_arr));
+print_r(json_encode($category_arr, JSON_NUMERIC_CHECK));
 
 ?>

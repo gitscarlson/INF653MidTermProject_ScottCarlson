@@ -25,7 +25,7 @@
              $this->port = getenv('PORT');
 
          }
-
+         /*
         //DB connect for Render - NEW
          public function connect () {
              if ($this->conn) {
@@ -42,12 +42,12 @@
                  }
              }
          }
-
-         /*
+         */
+         
         //DB Connect for localhost
         public function connect() {
             $this->conn = null;
-            $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->db_name}";
+            $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->dbname}";
 
             try {
                 $this->conn = new PDO($dsn, $this->username, $this->password);
@@ -57,7 +57,7 @@
             }
             return $this->conn;
         }
-        */
+        
     }
 
 ?>
