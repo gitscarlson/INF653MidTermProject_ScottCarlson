@@ -22,7 +22,7 @@ $author->read_single();
 
 //Create array
 $author_arr = array(
-    //'id' => $author->id,
+    $this->id = $author->id,
     'author' => $author->author
 );
 
