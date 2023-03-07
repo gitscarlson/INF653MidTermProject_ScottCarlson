@@ -25,7 +25,7 @@
              $this->port = getenv('PORT');
 
          }
-         /*
+         
         //DB connect for Render - NEW
          public function connect () {
              if ($this->conn) {
@@ -42,8 +42,8 @@
                  }
              }
          }
-         */
-        
+         
+        /*
         //DB Connect for localhost
         public function connect() {
             $this->conn = null;
@@ -57,7 +57,7 @@
             }
             return $this->conn;
         }
-        
+        */
     }
 
 ?>
