@@ -57,7 +57,8 @@
 
             //Set properties
             //$this->id = $row['id'];
-            $this->category = $row['category'];
+            $this->category = $row['category'] ?? '';
+            
         
         }
 

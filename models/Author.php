@@ -57,7 +57,7 @@
 
             //Set properties
             //$this->id = $row['id'];
-            $this->author = $row['author'];
+            $this->author = $row['author'] ?? '';
         
         }
 

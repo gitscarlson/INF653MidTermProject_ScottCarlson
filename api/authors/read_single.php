@@ -27,8 +27,14 @@ $author_arr = array(
 );
 
 
-
+if ($author->author == null){
+    echo json_encode(
+        array('message' => 'author_id Not Found')
+    );
+}
+else{
 //Change to JSON data
-echo (json_encode($author_arr, JSON_NUMERIC_CHECK));
+print_r(json_encode($author_arr, JSON_NUMERIC_CHECK));
+}
 
 ?>

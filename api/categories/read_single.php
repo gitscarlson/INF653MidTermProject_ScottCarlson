@@ -28,7 +28,7 @@ $category_arr = array(
 
 if ($category->category == null){
     echo json_encode(
-        array('message' => 'No Authors Found')
+        array('message' => 'category_id Not Found')
     );
 }
 else{
