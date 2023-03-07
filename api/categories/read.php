@@ -31,7 +31,7 @@ if($num > 0) {
 
         $category_item = array(
             'id'=>$id,
-            'author'=>$category
+            'category'=>$category
         );
 
         //Push data
