@@ -57,8 +57,7 @@
              LEFT JOIN
                  categories c ON category_id = c.id
              WHERE
-             id = ? OR author_id = ? OR
-             category_id = ?";
+             q.id = ?";
 
         //Prepared statements
         $stmt = $this->conn->prepare($query);
@@ -70,12 +69,19 @@
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if( is_array($row) ) {
 
+            $this->quote = $row['quote'];
+            $this->author = $row['author'];
+            $this->category = $row['category'];
+            
+        } else{
+            return;
+        }
         //Set properties
         //$this-id = $row['id'];
-        $this->quote = $row['quote'];
-        $this->author = $row['author'];
-        $this->category = $row['category'];
+        
 
         }
     }

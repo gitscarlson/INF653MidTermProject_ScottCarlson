@@ -27,7 +27,6 @@ $author_arr = array(
 );
 
 
-//if (isset($author->author)){
 if($author->author !== null){
     //Change to JSON data
     print_r(json_encode($author_arr, JSON_NUMERIC_CHECK));
