@@ -24,7 +24,7 @@ if(isset($data->quote) and isset($data->author_id) and isset($data->category_id)
     $quote->author_id = $data->author_id;
     $quote->category_id = $data->category_id;
 
-    quote->create();
+    $quote->create();
     echo json_encode(
         array("id"=> $db->lastInsertId(), "quote"=>$quote->quote, "author_id"=>$quote->author_id, "category_id"=>$quote->category_id)
     );
