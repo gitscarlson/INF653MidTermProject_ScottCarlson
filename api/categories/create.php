@@ -19,12 +19,11 @@ $category = new Category($db);
 //Get raw posted data
 $data = json_decode(file_get_contents("php://input"));
 
+//need to work with isset here I think
 
-$category->category = $data->category;
-
-
-//Create Author
-if($category->create()) {
+if (isset($data->category)) {
+    $category->category = $data->category;
+    $category->create();
     echo json_encode(
         array("id"=> $db->lastInsertId(), "category"=>$category->category)
     );

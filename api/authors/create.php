@@ -19,10 +19,9 @@ $author = new Author($db);
 //Get raw posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$author->author = $data->author;
-
-//Create Author
-if($author->create()) {
+if (isset($data->author)) {
+    $author->author = $data->author;
+    $author->create();
     echo json_encode(
         array("id"=> $db->lastInsertId(), "author"=>$author->author)
     );
