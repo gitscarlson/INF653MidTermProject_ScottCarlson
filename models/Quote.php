@@ -9,6 +9,8 @@
         public $quote;
         public $category;
         public $author;
+        public $author_id;
+        public $category_id;
 
         //Constructor with DB
 
@@ -44,6 +46,7 @@
         //Get single quote
 
         public function read_single() {
+            if($this->id !== null){
              //Create query
              $query = "SELECT 
              a.author as author,
@@ -58,6 +61,55 @@
                  categories c ON category_id = c.id
              WHERE
              q.id = ?";
+            }
+            else if ($this->author_id !== null && $this->category_id !== null){
+                //Create query
+                $query = "SELECT 
+                a.author as author,
+                c.category as category,
+                q.quote,
+                q.id
+                FROM 
+                     {$this->table} q
+                LEFT JOIN 
+                    authors a ON author_id = a.id
+                LEFT JOIN
+                    categories c ON category_id = c.id
+                WHERE
+                q.author_id = ? AND q.category_id = ?";
+               }
+               else if ($this->author_id !== null){
+                //Create query
+                $query = "SELECT 
+                a.author as author,
+                c.category as category,
+                q.quote,
+                q.id
+                FROM 
+                     {$this->table} q
+                LEFT JOIN 
+                    authors a ON author_id = a.id
+                LEFT JOIN
+                    categories c ON category_id = c.id
+                WHERE
+                q.author_id = ?";
+               }
+               else if ($this->category_id !== null){
+                //Create query
+                $query = "SELECT 
+                a.author as author,
+                c.category as category,
+                q.quote,
+                q.id
+                FROM 
+                     {$this->table} q
+                LEFT JOIN 
+                    authors a ON author_id = a.id
+                LEFT JOIN
+                    categories c ON category_id = c.id
+                WHERE
+                q.category_id = ?";
+               }
 
         //Prepared statements
         $stmt = $this->conn->prepare($query);
@@ -129,6 +181,13 @@
             //Bind data from above
             $stmt->bindParam(':id', $this->id);
 
+            $stmt->execute();
+            if($stmt->rowCount() < 1) {
+                return false;
+            } else {
+                return true;
+            }
+            /*
             //execute query
             if ($stmt->execute()) {
                 return true;
@@ -139,7 +198,7 @@
 
             return false;
             }
-
+            */
         }
     }
 
