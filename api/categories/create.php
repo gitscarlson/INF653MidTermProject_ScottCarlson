@@ -19,7 +19,9 @@ $category = new Category($db);
 //Get raw posted data
 $data = json_decode(file_get_contents("php://input"));
 
+
 $category->category = $data->category;
+
 
 //Create Author
 if($category->create()) {

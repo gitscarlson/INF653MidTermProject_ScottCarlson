@@ -84,6 +84,63 @@
         
 
         }
+
+        //Create Quote
+        public function create() {
+            //create query
+            $query = "INSERT INTO {$this->table} (quote, author_id, category_id)
+            VALUES (:quote, :author_id, :category_id)";
+
+            //prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->quote = htmlspecialchars(strip_tags($this->quote));
+
+            //Bind data from above
+            $stmt->bindParam(':quote', $this->quote);
+            $stmt->bindParam(':author_id', $this->author_id);
+            $stmt->bindParam(':category_id', $this->category_id);
+
+            //execute query
+            if ($stmt->execute()) {
+                $lastId = $this->conn->lastInsertId();
+                return true;
+            }
+            //print error if something goes wrong
+            else{           
+            printf("Error: %s. \n", $stmt->error);
+
+            return false;
+            }
+        }
+
+        //Delete Quote
+        public function delete() {
+            //Create delete query
+            $query = "DELETE FROM {$this->table} WHERE id = :id";
+
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
+
+            //Bind data from above
+            $stmt->bindParam(':id', $this->id);
+
+            //execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+            //print error if something goes wrong
+            else{           
+            printf("Error: %s. \n", $stmt->error);
+
+            return false;
+            }
+
+        }
     }
 
 
