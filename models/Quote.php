@@ -201,7 +201,8 @@
             $stmt = $this->conn->prepare($query);
 
             //Clean data
-            $this->category = htmlspecialchars(strip_tags($this->category));
+            
+            //$this->category = htmlspecialchars(strip_tags($this->category));
 
             //Bind data from above
             $stmt->bindParam(':id', $this->id);
