@@ -187,7 +187,26 @@
             } else {
                 return true;
             }
-            /*
+     
+        }
+
+        //Update Category
+        public function update() {
+            //Update query
+            $query = "UPDATE {$this->table} 
+            SET quote = :quote
+            WHERE id = :id";
+
+            //prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Clean data
+            $this->category = htmlspecialchars(strip_tags($this->category));
+
+            //Bind data from above
+            $stmt->bindParam(':id', $this->id);
+            $stmt->bindParam(':quote', $this->quote);
+
             //execute query
             if ($stmt->execute()) {
                 return true;
@@ -198,7 +217,6 @@
 
             return false;
             }
-            */
         }
     }
 
