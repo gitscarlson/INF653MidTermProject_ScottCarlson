@@ -224,6 +224,38 @@
 
         //Create Quote
         public function create() {
+            //query if author_id exists
+            $queryAuthorId = "SELECT quote
+                            FROM {$this->table} 
+                            WHERE author_id = :author_id";
+            
+            $stmt = $this->conn->prepare($queryAuthorId);
+            $stmt->bindParam(':author_id', $this->author_id);
+            if($stmt->execute()){
+                    if ($stmt->rowCount() === 0){
+                    echo json_encode(
+                        array('message' => 'author_id Not Found')
+                    );
+                    exit();
+                }
+            }
+
+            //query if category_id exists
+            $queryCategoryID = "SELECT quote
+                            FROM {$this->table} 
+                            WHERE category_id = :category_id";
+            
+            $stmt = $this->conn->prepare($queryCategoryID);
+            $stmt->bindParam(':category_id', $this->category_id);
+            if($stmt->execute()){
+                    if ($stmt->rowCount() === 0){
+                    echo json_encode(
+                        array('message' => 'category_id Not Found')
+                    );
+                    exit();
+                }
+            }
+
             //create query
             $query = "INSERT INTO {$this->table} (quote, author_id, category_id)
             VALUES (:quote, :author_id, :category_id)";
@@ -278,18 +310,36 @@
         //Update Quote
         public function update() {
             //query if author_id exists
-            $queryAuthorId = "SELECT id
+            $queryAuthorId = "SELECT quote
                             FROM {$this->table} 
                             WHERE author_id = :author_id";
+            
             $stmt = $this->conn->prepare($queryAuthorId);
             $stmt->bindParam(':author_id', $this->author_id);
-            if(! $stmt->execute()){
-                echo json_encode(
-                    array('message' => 'author_id Not Found')
-                );
+            if($stmt->execute()){
+                    if ($stmt->rowCount() === 0){
+                    echo json_encode(
+                        array('message' => 'author_id Not Found')
+                    );
+                    exit();
+                }
             }
 
             //query if category_id exists
+            $queryCategoryID = "SELECT quote
+                            FROM {$this->table} 
+                            WHERE category_id = :category_id";
+            
+            $stmt = $this->conn->prepare($queryCategoryID);
+            $stmt->bindParam(':category_id', $this->category_id);
+            if($stmt->execute()){
+                    if ($stmt->rowCount() === 0){
+                    echo json_encode(
+                        array('message' => 'category_id Not Found')
+                    );
+                    exit();
+                }
+            }
 
             //Update query
             $query = "UPDATE {$this->table} 
