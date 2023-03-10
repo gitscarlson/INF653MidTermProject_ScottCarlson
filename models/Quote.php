@@ -310,9 +310,10 @@
             }
             //print error if something goes wrong
             else{           
-            printf("Error: %s. \n", $stmt->error);
-
-            return false;
+                echo json_encode(
+                    array('message' => 'No Quotes Found')
+                );
+                exit();
             }
         }
     }
