@@ -309,6 +309,22 @@
 
         //Update Quote
         public function update() {
+            //query if id exists
+            $queryId = "SELECT quote
+                            FROM {$this->table} 
+                            WHERE id = :id";
+            
+            $stmt = $this->conn->prepare($queryId);
+            $stmt->bindParam(':id', $this->id);
+            if($stmt->execute()){
+                    if ($stmt->rowCount() === 0){
+                    echo json_encode(
+                        array('message' => 'No Quotes Found')
+                    );
+                    exit();
+                }
+            }
+
             //query if author_id exists
             $queryAuthorId = "SELECT quote
                             FROM {$this->table} 
